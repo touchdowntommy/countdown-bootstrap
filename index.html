@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Thanksgiving!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header class="mb-4" id="Title">
+        <h1>Countdown to Thanksgiving!</h1>
+    </header>
+
+    <button class="btn btn-dark mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
+        <i class="bi bi-list"></i> Open Menu
+    </button>
+
+    <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarLabel">Navigation</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#thing1">
+                        <i class="bi bi-eye-fill"></i> What to look forward to
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#thing2">
+                        <i class="bi bi-emoji-smile-fill"></i> Why I’m Excited
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#thing3">
+                        <i class="bi bi-people-fill"></i> How to get involved
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#timer">
+                        <i class="bi bi-clock-fill"></i> Countdown Timer
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="thing1" class="mb-4">
+            <h2><i class="bi bi-eye-fill"></i> What I’m Looking Forward To</h2>
+            <p>Thanksgiving is a top 3 holiday and has been around since 1621. It's during a good time of year when the weather is great. My family from all over comes together, and I can’t wait to enjoy some turkey and play games in the backyard.</p>
+            <img src="images/freebird.jpg" class="img-fluid mx-auto d-block" alt="Thanksgiving image">
+        </section>
+
+  
+        <section id="thing2" class="mb-4">
+            <h2><i class="bi bi-emoji-smile-fill"></i> Why I’m Excited</h2>
+            <p>The food is the highlight! My dad, uncle, and I fry the turkey, a recipe perfected over generations. I also love watching the movie *Freebird*, the ultimate Thanksgiving movie about taking turkey off the menu.</p>
+            <img src="images/familyguy.jpg" class="img-fluid mx-auto d-block" alt="Family enjoying Thanksgiving">
+        </section>
+
+
+        <section id="thing3" class="mb-4">
+            <h2><i class="bi bi-people-fill"></i> How Others Can Get Involved</h2>
+            <p>Help your family cook instead of being a bystander! Talk to your family, watch *Freebird*, and enjoy the food together. Make this Thanksgiving memorable by fully participating in the festivities.</p>
+            <img src="images/thanksgiving.webp" class="img-fluid mx-auto d-block" alt="Thanksgiving food">
+        </section>
+
+        <section id="timer" class="mb-4">
+            <h2><i class="bi bi-clock-fill"></i> Countdown Timer</h2>
+            <p id="countdown" class="fs-4">Timer here</p>
+            <img src="images/terraria.jpg" class="img-fluid mx-auto d-block" alt="Timer background">
+        </section>
+    </div>
+
+    <footer class="mt-4">
+        <a href="#Title" class="text-decoration-none text-light">
+            <i class="bi bi-arrow-up-circle-fill"></i> Back to top
+        </a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const thanksgivingDate = new Date('November 28, 2024 00:00:00').getTime();
+
+        // update function
+        function updateCountdown() {
+
+            const now = new Date().getTime();
+
+            // time difference
+            const difference = thanksgivingDate - now;
+
+            // get days hours and minuts from difference
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            // the text
+            document.getElementById("countdown").innerHTML = "Time until thanksgiving: " +
+                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            //when countdown reaches zero
+            if (difference < 0) {
+                document.getElementById("countdown").innerHTML = "Happy Thanksgiving!";
+            }
+        }
+
+        // run update
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+
+</html>
